@@ -13,7 +13,7 @@ export default function Authenticated({ user, header, children }: PropsWithChild
     return (
         <>
             <div className="flex max-h-screen gap-0">
-                <div className={`transition-all duration-300 ease-in-out bg-white h-[100vh] max-h-screen print:hidden ${sidebarOpen ? 'w-[300px] print:w-0' : 'w-0'}`}>
+                <div className={`transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 h-[100vh] max-h-screen print:hidden ${sidebarOpen ? 'w-[300px] print:w-0' : 'w-0'}`}>
                     <Sidebar isOpen={sidebarOpen} onClose={handleToggleSidebar} user={user} />
                 </div>
 

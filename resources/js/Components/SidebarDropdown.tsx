@@ -22,7 +22,7 @@ export default function SidebarDropdown({
                 }
                 {...(active ? { open: true } : { open: false })}
             >
-                <summary className="flex items-center justify-between px-4 py-2 text-gray-500 rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-700">
+                <summary className="flex items-center justify-between px-4 py-2 text-gray-500 rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-gray-700 dark:hover:text-gray-300">
 
                     <span className="flex items-center gap-2 text-sm font-medium">{icon} {title} </span>
 

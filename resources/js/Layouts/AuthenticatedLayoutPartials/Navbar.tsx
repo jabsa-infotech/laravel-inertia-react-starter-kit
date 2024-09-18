@@ -16,7 +16,7 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ onToggleSidebar, sidebarOpen, user }) => {
     return (
         <>
-            <nav className="sticky top-0 z-50 border-b border-gray-200 bg-stone-300 print:hidden ">
+            <nav className="sticky top-0 z-50 border-b border-gray-200 bg-stone-300 dark:bg-gray-800 dark:border-gray-700 print:hidden ">
                 <div className="px-4 sm:pr-6 lg:pr-8">
                     <div className="flex justify-between h-16">
                         <div className="flex">

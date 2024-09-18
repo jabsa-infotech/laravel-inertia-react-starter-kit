@@ -19,12 +19,12 @@ function Sidebar({ isOpen, user }: SidebarProps) {
             className={`flex flex-col justify-between h-full min-h-screen px-3 py-4 overflow-y-auto`}
         >
             <div className="px-4 py-6">
-                <span className="flex items-center justify-start gap-3 text-gray-500 bg-white rounded-lg">
+                <span className="flex items-center justify-start gap-3 text-gray-500 bg-white rounded-lg dark:bg-gray-800">
                     <ApplicationLogo className="w-8 h-8 text-gray-500 fill-current" />{" "}
                     <div className="font-bold">{import.meta.env.VITE_APP_NAME}</div>
                 </span>
 
-                <ul className="pt-4 mt-6 space-y-1 border-t">
+                <ul className="pt-4 mt-6 space-y-1 border-t border-gray-100 dark:border-gray-700">
                     <li>
                         <SidebarLink
                             href={route("dashboard")}
@@ -67,10 +67,10 @@ function Sidebar({ isOpen, user }: SidebarProps) {
                 </ul>
             </div>
 
-            <div className="sticky inset-x-0 bottom-0 border-t border-gray-100">
+            <div className="sticky inset-x-0 bottom-0 pt-3 border-t border-gray-100 dark:border-gray-700">
                 <Link
                     href={route("profile.edit")}
-                    className="flex items-center gap-2 p-4 bg-white hover:bg-gray-50"
+                    className="flex items-center gap-2 p-4 text-gray-800 bg-white rounded-lg dark:text-gray-200 hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700"
                 >
                     <UserCircle />
 
