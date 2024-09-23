@@ -3,6 +3,7 @@ import SidebarDropdown from "@/Components/SidebarDropdown";
 import SidebarLink from "@/Components/SidebarLink";
 import { Home, ShieldCheck, UserCircle } from "@/icons/HeroIcons";
 import { User } from "@/types";
+import { can, canAny } from "@/utils/toolkit";
 import { Link } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 
@@ -34,36 +35,46 @@ function Sidebar({ isOpen, user }: SidebarProps) {
                             Dashboard
                         </SidebarLink>
                     </li>
-                    <li>
-                            <SidebarDropdown
-                                title="Administration"
-                                icon={<ShieldCheck />}
-                            >
-                                <SidebarLink
-                                    href={route("admin.users.index")}
-                                    active={route().current("admin.users.*")}
-                                    canView={true}
+
+                    {/* Admin start */}
+                    {canAny([
+                        "view users",
+                        "view roles",
+                        "view permissions",
+                    ]) && (
+                            <li>
+                                <SidebarDropdown
+                                    title="Admin"
+                                    active={route().current("admin.users.*") || route().current("admin.roles.*") || route().current("admin.permissions.*")}
+                                    icon={<ShieldCheck />}
                                 >
-                                    Users
-                                </SidebarLink>
-                                <SidebarLink
-                                    href={route("admin.roles.index")}
-                                    active={route().current("admin.roles.*")}
-                                    canView={true}
-                                >
-                                    Roles
-                                </SidebarLink>
-                                <SidebarLink
-                                    href={route("admin.permissions.index")}
-                                    active={route().current(
-                                        "admin.permissions.*"
-                                    )}
-                                    canView={true}
-                                >
-                                    Permissions
-                                </SidebarLink>
-                            </SidebarDropdown>
-                        </li>
+                                    <SidebarLink
+                                        href={route("admin.users.index")}
+                                        active={route().current("admin.users.*")}
+                                        canView={can("view users")}
+                                    >
+                                        Users
+                                    </SidebarLink>
+                                    <SidebarLink
+                                        href={route("admin.roles.index")}
+                                        active={route().current("admin.roles.*")}
+                                        canView={can("view roles")}
+                                    >
+                                        Roles
+                                    </SidebarLink>
+                                    <SidebarLink
+                                        href={route("admin.permissions.index")}
+                                        active={route().current(
+                                            "admin.permissions.*"
+                                        )}
+                                        canView={can("view permissions")}
+                                    >
+                                        Permissions
+                                    </SidebarLink>
+                                </SidebarDropdown>
+                            </li>
+                        )}
+                    {/* Admin end */}
                 </ul>
             </div>
 
